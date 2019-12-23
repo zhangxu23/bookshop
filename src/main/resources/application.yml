@@ -1,0 +1,26 @@
+server:
+  port: 9000
+  serrvlet:
+    context-path: /
+#sMYSQL
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/bookshop?serverTimezone=Asia/Shanghai
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #静态资源
+  mvc:
+    static-path-pattern:/**
+# mybatis plus
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  type-aliases-package: com.zx.bookshop.entity
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  configuration:
+    map-underscore-to-camel-case: true
+  type-enums-package: com.zx.bookshop.entity.enums

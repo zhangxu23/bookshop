@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+
+	<head lang="en">
+		<meta charset="UTF-8">
+		<title>图书数据</title>
+	</head>
+
+	<body>
+	<div class="row">
+		<div class="container">
+		<!--/*@thymesVar id="bookList" type="java.util.List"*/-->
+		<div class="col-sm-6 col-md-3 wow fadeInLeft animated" th:each="book:${bookList}">
+			<div class="thumbnail">
+				<a href="details.html"><img th:src="@{'/img/'+${book.imgUrl}}" src="images/beiwei78.jpg" alt="通用的占位符缩略图"></a>
+				<div class="caption">
+					<h3>北纬78°</h3>
+					<p>价格:<!--/*@thymesVar id="newPrice" type="com.zx.bookshop.entity.Book"*/-->
+						<!--/*@thymesVar id="newPrice" type="java.lang.Integer"*/-->
+					<span th th:text="${book.newPrice}">19.5</span>元&nbsp;&nbsp;作者: <span th:text="${book.author}">陈丹燕</span>&nbsp;&nbsp;</p>
+					<p>
+						<a href="details.html">
+							更多信息
+						</a>
+					</p>
+				</div>
+			</div>
+		</div>
+		</div>
+		<!--分页-->
+		<div class="container">
+			<ul class="pager">
+				<li th:classappend="${cur==1}? 'notclick':''">
+					<a th:style="${cur==1} ? 'pointer-event:none':''"
+					   href="javascript:void(0)" th:onclick="|loadData(${pre})|">&larr;上一页</a>
+				</li>
+				<li th:classappend="${cur==1}? 'notclick':''">
+					<a th:style="${cur==1} ? 'pointer-event:none':''"
+					   href="javascript:void(0)" th:onclick="|loadData(${next})|">下一页 &rarr;</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	</body>
+
+</html>
